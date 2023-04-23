@@ -8,42 +8,28 @@ metadata:
   - example.com/syncwavetest-finalizer
 ---
 apiVersion: v1
-kind: Pod
+kind: Namespace
 metadata:
-  name: podtest1
-  namespace: syncwavetest
+  name: syncwavetest2
   annotations:
     argocd.argoproj.io/sync-wave: "20"
   finalizers:
-  - example.com/podtest1-finalizer1
-  - example.com/podtest1-finalizer2
-spec:
-  containers:
-  - name: podtest1
-    image: nginx
+  - example.com/syncwavetest-finalizer
 ---
 apiVersion: v1
-kind: Pod
+kind: Namespace
 metadata:
-  name: podtest2
-  namespace: syncwavetest
+  name: syncwavetest3
   annotations:
     argocd.argoproj.io/sync-wave: "30"
   finalizers:
-  - example.com/podtest2-finalizer
-spec:
-  containers:
-  - name: podtest2
-    image: nginx
+  - example.com/syncwavetest-finalizer
 ---
 apiVersion: v1
-kind: Pod
+kind: Namespace
 metadata:
-  name: podtest3
+  name: syncwavetest4
   annotations:
     argocd.argoproj.io/sync-wave: "40"
-  namespace: syncwavetest
-spec:
-  containers:
-  - name: podtest3
-    image: nginx
+  finalizers:
+  - example.com/syncwavetest-finalizer
